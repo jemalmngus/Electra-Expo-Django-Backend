@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Testimonial,Subscription,FAQ
+from .models import Testimonial,Subscription,FAQ,Exhibitor
 
 
 class TestimonialSerializer(serializers.ModelSerializer):
@@ -20,3 +20,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscription
         fields = ('email',)
+class ExhibitorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exhibitor
+        fields = ['id', 'company_name', 'name', 'email', 'contact_number']

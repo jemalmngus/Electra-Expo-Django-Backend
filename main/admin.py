@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FAQ,Subscription,Testimonial
+from .models import FAQ,Subscription,Testimonial,Exhibitor
 
 admin.site.site_header = "Electric Expo Admin"
 admin.site.site_title = "Electric Expo Admin"
@@ -13,3 +13,4 @@ class TestimonialAdmin(admin.ModelAdmin):
 
 admin.site.register(FAQ)
 admin.site.register(Subscription)
+admin.site.register(Exhibitor)

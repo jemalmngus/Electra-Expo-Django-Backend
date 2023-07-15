@@ -25,3 +25,13 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.email
+    
+class Exhibitor(models.Model):
+    name = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=255, unique=True)
+    email = models.EmailField(unique=True)
+    contact_number = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return self.company_name
+

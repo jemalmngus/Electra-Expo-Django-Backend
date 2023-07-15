@@ -1,9 +1,9 @@
-from rest_framework import generics
+from rest_framework import generics,viewsets
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Testimonial, FAQ, Subscription
-from .serializers import TestimonialSerializer, FAQSerializer, SubscriptionSerializer
+from .models import Testimonial, FAQ, Subscription,Exhibitor
+from .serializers import TestimonialSerializer, FAQSerializer, SubscriptionSerializer,ExhibitorSerializer
 from django.http import HttpResponseForbidden
 from django.conf import settings
 
@@ -49,3 +49,14 @@ class FAQRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 class TestimonialListAPIView(generics.ListAPIView):
     queryset = Testimonial.objects.all()
     serializer_class = TestimonialSerializer
+
+class ExhibitorViewSet(viewsets.ModelViewSet):
+    queryset = Exhibitor.objects.all()
+    serializer_class = ExhibitorSerializer
+    @validate_api_key
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    @validate_api_key
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
